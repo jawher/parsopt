@@ -1,0 +1,11 @@
+package: github.com/jawher/parsopt
+import:
+- package: github.com/fatih/color
+  version: 1.5.0
+- package: github.com/jawher/mow.cli
+  version: 1.0.1
+testImport:
+- package: github.com/stretchr/testify
+  version: ~1.1.4
+  subpackages:
+  - require
