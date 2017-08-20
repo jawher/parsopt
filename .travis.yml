@@ -1,7 +1,8 @@
+sudo: false
+
 language: go
 go:
 - 1.8
-sudo: false
 
 install: make setup
 
@@ -15,7 +16,7 @@ before_deploy:
 deploy:
   provider: releases
   api_key:
-    secure: xxx
+    secure: VEvjRQhc+RPVR310HsBmRMycjQLuWnFjrUwbFh5T6+GuSfjT4BhmVazcW2ZzJAt30rWK0vN2yh6wWZ2/YxzyxFF0424LQeMeVrL/a8UsjEYjUb8DTRQRk6p6YBkqRtkEEFcSojgMEmZ8DtsKfO5IKFs2Mu7XqlAgerUYgIL09pBBIFuzAiAkehmhp/4N+IbQEPvjAOIKDPu9lLtOlTEvGGfQZEH+CS7fpiu1gfFBGFe5bV/kPrS4x6SwO0YDdgaEjoiGIBwyJeeXNrilNvKv4ExHkkDKQPSy4Z4crlgloN84GZLjHWnMOzEk35r/Jr+IXwG8hTnsSil22ifLMn3NOyD85ftn49aYLv+vVvnFIAHRyXK7LBAko9PcSNYM17Z3yWV95Atjr59GkT1eIiV1uOP7PpDo1HVx2wKA5jMwfLkhWwaTsLpMNGqRvT7tnTzoxaceJbxhCLVpNSJdXleqelT/MZmoASM7SYRECuyzOBpTw0EFXPpyx+60wkcZHVsxY0sOA+NFaR4focSdk4k4yB7Ei2+JUml3MqjWXitM6b2XpcE0A+ZCoFTj/x9uHg4GmKKiTfaWE/O4n+EAAHccw4GcK71ZcazIQrkGZuW2JrcMZicUo7dS8UyAEeCeM3/eRVXn6/H383EMMnsGqPAWjcM71w6aNjCJBN/f2wdkRuw=
   file_glob: true
   file: bin/*
   skip_cleanup: true
