@@ -1,5 +1,7 @@
 # parsopt : getopt[s] on steroids
 
+[![Build Status](https://travis-ci.org/jawher/parsopt.svg?branch=master)](https://travis-ci.org/jawher/parsopt)
+
 The parsopt utility is used to quickly and easily accept and validate options and arguments in shell procedures.
 It's much more powerful and intuitive compared to getopt[s] as it handles short and long options, arguments, automatic help generation. etc.
 
