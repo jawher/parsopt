@@ -9,12 +9,7 @@ It's much more powerful and intuitive compared to getopt[s] as it handles short 
 
 ### Install parsopt
 
-To get the latest release:
- 
-```
-curl -L https://github.com/jawher/parsopt/releases/download/$(curl --silent https://api.github.com/repos/jawher/parsopt/releases/latest | grep tag_name | cut -d '"' -f 4)/parsopt-$(uname -s)-$(uname -m) > /usr/local/bin/parsopt
-chmod +x /usr/local/bin/parsopt
-```
+Download your platform binaryfrom this page: https://github.com/jawher/parsopt/releases/tag/v0.1
 
 To get the tip version (assuming you already have installed go):
 
