@@ -12,7 +12,7 @@ parsopt: *.go
 check: lint vet fmtcheck ineffassign
 
 lint:
-	golint -set_exit_status .
+	bin/golangci-lint run
 
 vet:
 	go vet
@@ -26,7 +26,6 @@ ineffassign:
 	ineffassign .
 
 setup:
-	go get github.com/gordonklaus/ineffassign
-	go get github.com/golang/lint/golint
+	curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s v1.17.1
 
 .PHONY: build gotest batstest check lint vet fmtcheck ineffassign setup
