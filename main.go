@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log"
 	"os"
 
 	"flag"
@@ -52,7 +51,10 @@ func main() {
 		runApp(app, appArgs)
 	}
 
-	log.Fatal(outerApp.Run(os.Args))
+	if err := outerApp.Run(os.Args); err != nil {
+		fmt.Fprintln(os.Stderr, err.Error())
+		os.Exit(1)
+	}
 }
 
 var (
