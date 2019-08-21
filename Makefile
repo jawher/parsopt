@@ -26,9 +26,7 @@ ineffassign:
 	ineffassign .
 
 setup:
-	go get github.com/Masterminds/glide
 	go get github.com/gordonklaus/ineffassign
 	go get github.com/golang/lint/golint
-	glide up
 
 .PHONY: build gotest batstest check lint vet fmtcheck ineffassign setup
