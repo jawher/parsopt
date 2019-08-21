@@ -19,6 +19,7 @@ jobs:
     - name: Setup
       run: |
         make setup
+        git submodule update --init
 
     - name: Test
       run: make test

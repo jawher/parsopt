@@ -27,5 +27,6 @@ ineffassign:
 
 setup:
 	curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s v1.17.1
+	go mod download
 
 .PHONY: build gotest batstest check lint vet fmtcheck ineffassign setup
