@@ -22,7 +22,9 @@ load 'checks'
 
 @test "strings opt env value" {
     export XXX_DEFAULT="ENV VAL 1, ENV VAL 2"
-    run ./parsopt 'opt xxx -x --xxx :strings =default $XXX_DEFAULT description'
+    run ./parsopt '
+        opt xxx -x --xxx :strings =default $XXX_DEFAULT description
+        spec -x...'
 
     assert_success
     assert_var xxx '( "ENV VAL 1" "ENV VAL 2" )'
@@ -31,7 +33,9 @@ load 'checks'
 
 @test "strings opt user value (short) (#1)" {
     export XXX_DEFAULT="ENV VAL 1, ENV VAL 2"
-    run ./parsopt 'opt xxx -x --xxx :strings =default $XXX_DEFAULT description' -x "FROM USER 1" -x "FROM USER 2"
+    run ./parsopt '
+        opt xxx -x --xxx :strings =default $XXX_DEFAULT description
+        spec -x...' -x "FROM USER 1" -x "FROM USER 2"
 
     assert_success
     assert_var xxx '( "FROM USER 1" "FROM USER 2" )'
@@ -40,7 +44,9 @@ load 'checks'
 
 @test "strings opt user value (short) (#2)" {
     export XXX_DEFAULT="ENV VAL 1, ENV VAL 2"
-    run ./parsopt 'opt xxx -x --xxx :strings =default $XXX_DEFAULT description' -x="FROM USER 1" -x="FROM USER 2"
+    run ./parsopt '
+        opt xxx -x --xxx :strings =default $XXX_DEFAULT description
+        spec -x...' -x="FROM USER 1" -x="FROM USER 2"
 
     assert_success
     assert_var xxx '( "FROM USER 1" "FROM USER 2" )'
@@ -49,7 +55,9 @@ load 'checks'
 
 @test "strings opt user value (short) (#3)" {
     export XXX_DEFAULT="ENV VAL 1, ENV VAL 2"
-    run ./parsopt 'opt xxx -x --xxx :strings =default $XXX_DEFAULT description' -x"FROM USER 1" -x"FROM USER 2"
+    run ./parsopt '
+        opt xxx -x --xxx :strings =default $XXX_DEFAULT description
+        spec -x...' -x"FROM USER 1" -x"FROM USER 2"
 
     assert_success
     assert_var xxx '( "FROM USER 1" "FROM USER 2" )'
@@ -58,7 +66,9 @@ load 'checks'
 
 @test "strings opt user value (long) (#1)" {
     export XXX_DEFAULT="ENV VAL 1, ENV VAL 2"
-    run ./parsopt 'opt xxx -x --xxx :strings =default $XXX_DEFAULT description' --xxx "FROM USER 1" --xxx "FROM USER 2"
+    run ./parsopt '
+        opt xxx -x --xxx :strings =default $XXX_DEFAULT description
+        spec -x...' --xxx "FROM USER 1" --xxx "FROM USER 2"
 
     assert_success
     assert_var xxx '( "FROM USER 1" "FROM USER 2" )'
@@ -67,7 +77,9 @@ load 'checks'
 
 @test "strings opt user value (long) (#2)" {
     export XXX_DEFAULT="ENV VAL 1, ENV VAL 2"
-    run ./parsopt 'opt xxx -x --xxx :strings =default $XXX_DEFAULT description' --xxx="FROM USER 1" --xxx="FROM USER 2"
+    run ./parsopt '
+        opt xxx -x --xxx :strings =default $XXX_DEFAULT description
+        spec -x...' --xxx="FROM USER 1" --xxx="FROM USER 2"
 
     assert_success
     assert_var xxx '( "FROM USER 1" "FROM USER 2" )'
