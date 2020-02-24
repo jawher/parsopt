@@ -16,6 +16,9 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v1
 
+      - name: Get bats
+        run: git submodule update --init
+
       - name: Test
         run: make test
 
