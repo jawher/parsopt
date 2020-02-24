@@ -14,7 +14,7 @@ Download your platform binaryfrom this page: https://github.com/jawher/parsopt/r
 To get the tip version (assuming you already have installed go):
 
 ```
-go install github.com/jawher/parsopt
+go get github.com/jawher/parsopt
 ```
 
 ### Use it

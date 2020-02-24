@@ -10,7 +10,8 @@ import (
 	"strings"
 
 	"github.com/fatih/color"
-	"github.com/jawher/mow.cli"
+
+	cli "github.com/jawher/mow.cli"
 )
 
 var (
@@ -51,7 +52,7 @@ func main() {
 		runApp(app, appArgs)
 	}
 
-	outerApp.Run(os.Args)
+	_ = outerApp.Run(os.Args)
 }
 
 var (
