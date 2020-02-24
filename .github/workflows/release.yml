@@ -1,6 +1,5 @@
 name: Release
 
-# Triggered only when a tag is pushed
 on:
   push:
     branches:

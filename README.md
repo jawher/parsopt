@@ -11,6 +11,11 @@ It's much more powerful and intuitive compared to getopt[s] as it handles short 
 
 Download your platform binary from this page: https://github.com/jawher/parsopt/releases/tag/v0.1
 
+To get the tip version (assuming you already have installed go):
+
+```
+go get github.com/jawher/parsopt
+```
 
 ### Use it
 
