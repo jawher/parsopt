@@ -6,29 +6,13 @@ gotest:
 batstest: parsopt
 	./test/libs/bats/bin/bats test/*.bats
 
-parsopt: *.go
+check:
+	bin/golangci-lint run
+
+parsopt:
 	go build
 
-check: lint vet fmtcheck ineffassign
-
-lint:
-	golint -set_exit_status .
-
-vet:
-	go vet
-
-fmtcheck:
-	@ export output="$$(gofmt -s -d ./*.go)"; \
-		[ -n "$${output}" ] && echo "$${output}" && export status=1; \
-		exit $${status:-0}
-
-ineffassign:
-	ineffassign .
-
 setup:
-	go get github.com/Masterminds/glide
-	go get github.com/gordonklaus/ineffassign
-	go get github.com/golang/lint/golint
-	glide up
+	curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s v1.23.8
 
-.PHONY: build gotest batstest check lint vet fmtcheck ineffassign setup
+.PHONY: build gotest batstest check setup

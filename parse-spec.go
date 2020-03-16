@@ -215,13 +215,8 @@ func words(line string) []string {
 	line = strings.Replace(line, "\t", " ", -1)
 
 	parts := strings.Fields(line)
-	res := make([]string, 0, len(parts))
 
-	for _, word := range parts {
-		res = append(res, word)
-	}
-
-	return res
+	return append(make([]string, 0, len(parts)), parts...)
 }
 
 func inList(x string, xs []string) bool {
