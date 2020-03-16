@@ -9,6 +9,8 @@ batstest: parsopt
 check:
 	bin/golangci-lint run
 
+parsopt:
+	go build
 
 setup:
 	curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s v1.23.8
