@@ -9,8 +9,9 @@ It's much more powerful and intuitive compared to getopt[s] as it handles short 
 
 ### Install parsopt
 
-Download your platform binary from this page: https://github.com/jawher/parsopt/releases/tag/v0.1
+Download the latest binary for your platform (Linux or Mac) from this page: https://github.com/jawher/parsopt/releases
 
+Or build it locally.
 
 ### Use it
 
