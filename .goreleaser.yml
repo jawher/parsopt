@@ -1,22 +1,37 @@
+project_name: parsopt
 builds:
   - env:
       - CGO_ENABLED=0
+    flags:
+      - -trimpath
     ldflags:
       - -s -w
       - -extldflags "-static"
       - -X main.version={{.Version}}
+    goos:
+      - linux
+      - darwin
     goarch:
       - amd64
+      - arm64
+
+universal_binaries:
+  - replace: true
+
 archives:
   - replacements:
       darwin: Darwin
       linux: Linux
       amd64: x86_64
+
 checksum:
   name_template: 'checksums.txt'
+
 snapshot:
   name_template: "{{ .Tag }}-next"
+
 changelog:
+  use: github
   sort: asc
   filters:
     exclude:
