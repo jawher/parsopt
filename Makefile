@@ -6,8 +6,8 @@ gotest:
 batstest: parsopt
 	./test/libs/bats/bin/bats test/*.bats
 
-check:
-	bin/golangci-lint run
+golint:
+	docker run --rm -v $(PWD):/app -w /app golangci/golangci-lint:v1.50 golangci-lint run -v
 
 parsopt:
 	go build
