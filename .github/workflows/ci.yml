@@ -1,42 +1,82 @@
+---
 name: CI
 
-on: push
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+env:
+  GO_VERSION: '1.20'
 
 jobs:
   test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the code
-        uses: actions/checkout@v2
-      
-      - name: Set up Go
-        uses: actions/setup-go@v3
-        with:
-          go-version: '1.19'
-          cache: true
-        id: go
-
-      - name: Get bats
-        run: git submodule update --init
-
-      - name: Test
-        run: make test
-
-  lint:
+    name: build and test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
         uses: actions/checkout@v3
 
       - name: Set up Go
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v4
         with:
-          go-version: '1.19'
+          go-version: ${{env.GO_VERSION}}
+          cache: true
+        id: go
+
+      - name: Get bats
+        run: git submodule update --init
+
+      # Verify that go.mod and go.sum is synchronized
+      - name: Check Go modules
+        run: |
+          if [[ ! -z $(go mod tidy && git diff --exit-code) ]]; then
+            echo "Please run "go mod tidy" to sync Go modules"
+            exit 1
+          fi
+
+      - name: Test
+        run: make test
+
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: ${{env.GO_VERSION}}
           cache: true
         id: go
 
       - name: lint
         uses: golangci/golangci-lint-action@v3
         with:
-          version: v1.50
+          version: v1.52
+
+  check-release:
+    name: ensure release works
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: ${{env.GO_VERSION}}
+          cache: true
+        id: go
+
+      - name: Simulate Release the application
+        uses: goreleaser/goreleaser-action@v4
+        with:
+          args: release --rm-dist --snapshot --skip-publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
