@@ -75,7 +75,7 @@ jobs:
         id: go
 
       - name: Simulate Release the application
-        uses: goreleaser/goreleaser-action@v4
+        uses: goreleaser/goreleaser-action@v5
         with:
           args: release --rm-dist --snapshot --skip-publish
         env:
