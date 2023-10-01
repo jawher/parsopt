@@ -77,6 +77,6 @@ jobs:
       - name: Simulate Release the application
         uses: goreleaser/goreleaser-action@v5
         with:
-          args: release --rm-dist --snapshot --skip-publish
+          args: release --clean --snapshot --skip=publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
